@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="qr_marker_03">
+    <static>true</static>
+    <link name="link">
+      <visual name="qr_visual">
+        <pose>0 0 0.003 0 0 0</pose>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>0.34 0.34</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://qr_marker_03/materials/scripts</uri>
+            <uri>model://qr_marker_03/materials/textures</uri>
+            <name>QR/Marker03</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

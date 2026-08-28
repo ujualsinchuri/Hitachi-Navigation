@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+
+  <model name="transformer_model">
+
+    <static>true</static>
+
+    <link name="transformer_link">
+
+      <visual name="transformer_visual">
+
+        <geometry>
+          <mesh>
+
+            <uri>
+              model://transformer_model/meshes/Transformer.stl
+            </uri>
+
+            <scale>1 1 1</scale>
+
+          </mesh>
+        </geometry>
+
+        <material>
+          <ambient>0.34 0.37 0.39 1</ambient>
+          <diffuse>0.42 0.46 0.49 1</diffuse>
+          <specular>0.12 0.12 0.12 1</specular>
+        </material>
+
+      </visual>
+
+      <collision name="transformer_collision">
+
+        <geometry>
+          <mesh>
+
+            <uri>
+              model://transformer_model/meshes/Transformer.stl
+            </uri>
+
+            <scale>1 1 1</scale>
+
+          </mesh>
+        </geometry>
+
+      </collision>
+
+    </link>
+
+  </model>
+
+</sdf>
