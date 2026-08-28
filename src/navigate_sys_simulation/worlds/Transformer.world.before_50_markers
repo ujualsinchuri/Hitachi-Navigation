@@ -1,0 +1,383 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <world name="transformer_world">
+
+    <gravity>0 0 -9.81</gravity>
+
+    <physics name="ode_physics" type="ode">
+      <real_time_update_rate>1000</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
+    <scene>
+      <shadows>true</shadows>
+      <ambient>0.68 0.68 0.68 1</ambient>
+      <background>0.86 0.86 0.86 1</background>
+    </scene>
+
+    <light name="sun" type="directional">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 15 0 0 0</pose>
+      <diffuse>0.95 0.95 0.95 1</diffuse>
+      <direction>-0.35 0.15 -1</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>24 24</size>
+            </plane>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>24 24</size>
+            </plane>
+          </geometry>
+
+          <material>
+            <ambient>0.72 0.72 0.70 1</ambient>
+            <diffuse>0.72 0.72 0.70 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Actual transformer STL. -->
+    <include>
+      <uri>model://transformer_model</uri>
+      <name>transformer_model</name>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <!-- Actual  inspection-line STL.
+         Its original Z range is -0.02 to 0.00 m, so a +0.025 m offset
+         places it just above the floor. -->
+    <include>
+      <uri>model://line_model</uri>
+      <name>line_model</name>
+      <pose>0.143000 0.413600 0.025 0 0 0</pose>
+    </include>
+    
+
+    <gui fullscreen="0">
+      <camera name="overview_camera">
+        <pose>14 -16 13 0 0.60 2.30</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+  
+    <include>
+      <uri>model://aruco_floor_00</uri>
+      <name>aruco_floor_00</name>
+      <pose>-2.594854 -9.919190 0.035 0 0 1.570796</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_01</uri>
+      <name>aruco_floor_01</name>
+      <pose>-1.062673 -9.875330 0.035 0 0 1.650626</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_02</uri>
+      <name>aruco_floor_02</name>
+      <pose>-0.169542 -9.803880 0.035 0 0 1.650626</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_03</uri>
+      <name>aruco_floor_03</name>
+      <pose>0.723588 -9.732429 0.035 0 0 1.650626</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_04</uri>
+      <name>aruco_floor_04</name>
+      <pose>1.616719 -9.660979 0.035 0 0 1.650626</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_05</uri>
+      <name>aruco_floor_05</name>
+      <pose>2.509849 -9.589529 0.035 0 0 1.650626</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_06</uri>
+      <name>aruco_floor_06</name>
+      <pose>3.402979 -9.518078 0.035 0 0 1.650626</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_07</uri>
+      <name>aruco_floor_07</name>
+      <pose>4.296110 -9.446628 0.035 0 0 1.650626</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_08</uri>
+      <name>aruco_floor_08</name>
+      <pose>4.855878 -8.852889 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_09</uri>
+      <name>aruco_floor_09</name>
+      <pose>4.871892 -8.088493 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_10</uri>
+      <name>aruco_floor_10</name>
+      <pose>4.887906 -7.324097 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_11</uri>
+      <name>aruco_floor_11</name>
+      <pose>4.903919 -6.559701 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_12</uri>
+      <name>aruco_floor_12</name>
+      <pose>4.919933 -5.795305 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_13</uri>
+      <name>aruco_floor_13</name>
+      <pose>4.935947 -5.030909 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_14</uri>
+      <name>aruco_floor_14</name>
+      <pose>4.951961 -4.266513 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_15</uri>
+      <name>aruco_floor_15</name>
+      <pose>4.967975 -3.502118 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_16</uri>
+      <name>aruco_floor_16</name>
+      <pose>4.983989 -2.737722 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_17</uri>
+      <name>aruco_floor_17</name>
+      <pose>5.000003 -1.973326 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_18</uri>
+      <name>aruco_floor_18</name>
+      <pose>5.016017 -1.208930 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_19</uri>
+      <name>aruco_floor_19</name>
+      <pose>5.032030 -0.444534 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_20</uri>
+      <name>aruco_floor_20</name>
+      <pose>5.048044 0.319862 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_21</uri>
+      <name>aruco_floor_21</name>
+      <pose>5.064058 1.084258 0.035 0 0 3.120646</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_22</uri>
+      <name>aruco_floor_22</name>
+      <pose>4.837576 2.129975 0.035 0 0 3.589113</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_23</uri>
+      <name>aruco_floor_23</name>
+      <pose>4.277582 3.296628 0.035 0 0 3.589113</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_24</uri>
+      <name>aruco_floor_24</name>
+      <pose>3.717589 4.463280 0.035 0 0 3.589113</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_25</uri>
+      <name>aruco_floor_25</name>
+      <pose>2.993504 5.216456 0.035 0 0 4.225490</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_26</uri>
+      <name>aruco_floor_26</name>
+      <pose>1.605538 5.951262 0.035 0 0 4.225490</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_27</uri>
+      <name>aruco_floor_27</name>
+      <pose>0.569455 6.208600 0.035 0 0 4.712389</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_28</uri>
+      <name>aruco_floor_28</name>
+      <pose>-0.785851 6.208600 0.035 0 0 4.712389</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_29</uri>
+      <name>aruco_floor_29</name>
+      <pose>-1.790661 5.899330 0.035 0 0 -0.973620</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_30</uri>
+      <name>aruco_floor_30</name>
+      <pose>-2.472181 5.435896 0.035 0 0 -0.973620</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_31</uri>
+      <name>aruco_floor_31</name>
+      <pose>-3.153701 4.972463 0.035 0 0 -0.973620</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_32</uri>
+      <name>aruco_floor_32</name>
+      <pose>-3.835221 4.509029 0.035 0 0 -0.973620</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_33</uri>
+      <name>aruco_floor_33</name>
+      <pose>-4.516740 4.045595 0.035 0 0 -0.973620</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_34</uri>
+      <name>aruco_floor_34</name>
+      <pose>-5.198260 3.582162 0.035 0 0 -0.973620</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_35</uri>
+      <name>aruco_floor_35</name>
+      <pose>-5.879780 3.118728 0.035 0 0 -0.973620</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_36</uri>
+      <name>aruco_floor_36</name>
+      <pose>-6.334590 2.259458 0.035 0 0 0.000000</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_37</uri>
+      <name>aruco_floor_37</name>
+      <pose>-6.334590 0.755989 0.035 0 0 0.000000</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_38</uri>
+      <name>aruco_floor_38</name>
+      <pose>-6.228361 -0.333655 0.035 0 0 0.194365</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_39</uri>
+      <name>aruco_floor_39</name>
+      <pose>-6.078065 -1.097160 0.035 0 0 0.194365</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_40</uri>
+      <name>aruco_floor_40</name>
+      <pose>-5.927768 -1.860665 0.035 0 0 0.194365</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_41</uri>
+      <name>aruco_floor_41</name>
+      <pose>-5.777472 -2.624170 0.035 0 0 0.194365</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_42</uri>
+      <name>aruco_floor_42</name>
+      <pose>-5.627176 -3.387675 0.035 0 0 0.194365</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_43</uri>
+      <name>aruco_floor_43</name>
+      <pose>-5.476880 -4.151180 0.035 0 0 0.194365</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_44</uri>
+      <name>aruco_floor_44</name>
+      <pose>-5.326583 -4.914685 0.035 0 0 0.194365</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_45</uri>
+      <name>aruco_floor_45</name>
+      <pose>-5.176287 -5.678190 0.035 0 0 0.194365</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_46</uri>
+      <name>aruco_floor_46</name>
+      <pose>-5.025991 -6.441695 0.035 0 0 0.194365</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_47</uri>
+      <name>aruco_floor_47</name>
+      <pose>-4.875695 -7.205200 0.035 0 0 0.194365</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_48</uri>
+      <name>aruco_floor_48</name>
+      <pose>-4.725398 -7.968705 0.035 0 0 0.194365</pose>
+    </include>
+
+    <include>
+      <uri>model://aruco_floor_49</uri>
+      <name>aruco_floor_49</name>
+      <pose>-4.575102 -8.732210 0.035 0 0 0.194365</pose>
+    </include>
+
+  </world>
+</sdf>

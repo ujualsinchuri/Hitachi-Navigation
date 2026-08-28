@@ -1,0 +1,411 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+import csv
+import math
+
+
+PACKAGE_DIRECTORY = Path(__file__).resolve().parent.parent
+WORLD_PATH = PACKAGE_DIRECTORY / "worlds" / "transformer_infographic_qr.world"
+CSV_PATH = PACKAGE_DIRECTORY / "config" / "qr_locations.csv"
+
+TRANSFORMER_LENGTH = 3.50
+TRANSFORMER_WIDTH = 2.00
+TRANSFORMER_HEIGHT = 2.50
+
+RADIATOR_DEPTH = 0.40
+RADIATOR_HEIGHT = 2.10
+RADIATOR_FIN_COUNT = 13
+
+PATH_OFFSET = 1.00
+CHAMFER = 0.65
+
+PATH_LINE_WIDTH = 0.10
+PATH_LINE_HEIGHT = 0.008
+
+BOUNDARY_LINE_WIDTH = 0.035
+BOUNDARY_LINE_HEIGHT = 0.006
+BOUNDARY_DASH_LENGTH = 0.16
+BOUNDARY_DASH_GAP = 0.11
+
+QR_Z = 0.015
+
+FLOOR_LENGTH = 14.0
+FLOOR_WIDTH = 11.0
+
+RADIATING_BOUNDARY = [
+    (-1.75, -1.00),
+    (-1.75,  1.00),
+    ( 1.75,  1.00),
+    ( 2.15,  1.00),
+    ( 2.15, -1.00),
+    ( 1.75, -1.00),
+]
+
+LEFT_X = -1.75 - PATH_OFFSET
+RIGHT_X = 2.15 + PATH_OFFSET
+BOTTOM_Y = -1.00 - PATH_OFFSET
+TOP_Y = 1.00 + PATH_OFFSET
+
+PATH_POINTS = [
+    (LEFT_X + CHAMFER, BOTTOM_Y),
+    (RIGHT_X - CHAMFER, BOTTOM_Y),
+    (RIGHT_X, BOTTOM_Y + CHAMFER),
+    (RIGHT_X, TOP_Y - CHAMFER),
+    (RIGHT_X - CHAMFER, TOP_Y),
+    (LEFT_X + CHAMFER, TOP_Y),
+    (LEFT_X, TOP_Y - CHAMFER),
+    (LEFT_X, BOTTOM_Y + CHAMFER),
+]
+
+
+def box_model(name, x, y, z, length, width, height, color):
+    return f"""
+    <model name="{name}">
+      <static>true</static>
+      <pose>{x:.5f} {y:.5f} {z:.5f} 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>{length:.5f} {width:.5f} {height:.5f}</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>{length:.5f} {width:.5f} {height:.5f}</size></box></geometry>
+          <material>
+            <ambient>{color}</ambient>
+            <diffuse>{color}</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    """
+
+
+def cylinder_model(name, x, y, z, radius, length, color, roll=0.0, pitch=0.0, yaw=0.0):
+    return f"""
+    <model name="{name}">
+      <static>true</static>
+      <pose>{x:.5f} {y:.5f} {z:.5f} {roll:.5f} {pitch:.5f} {yaw:.5f}</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><cylinder><radius>{radius:.5f}</radius><length>{length:.5f}</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>{radius:.5f}</radius><length>{length:.5f}</length></cylinder></geometry>
+          <material>
+            <ambient>{color}</ambient>
+            <diffuse>{color}</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    """
+
+
+def visual_line_segment(name, start, end, width, height, color):
+    x1, y1 = start
+    x2, y2 = end
+    dx = x2 - x1
+    dy = y2 - y1
+    length = math.hypot(dx, dy)
+    yaw = math.atan2(dy, dx)
+
+    return f"""
+    <model name="{name}">
+      <static>true</static>
+      <pose>{(x1+x2)/2.0:.5f} {(y1+y2)/2.0:.5f} {height/2.0:.5f} 0 0 {yaw:.5f}</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry><box><size>{length:.5f} {width:.5f} {height:.5f}</size></box></geometry>
+          <material>
+            <ambient>{color}</ambient>
+            <diffuse>{color}</diffuse>
+            <emissive>{color}</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    """
+
+
+def closed_segments(points):
+    for index in range(len(points)):
+        yield points[index], points[(index + 1) % len(points)]
+
+
+def interpolate(start, end, ratio):
+    return (
+        start[0] + ratio * (end[0] - start[0]),
+        start[1] + ratio * (end[1] - start[1]),
+    )
+
+
+def measurement_positions():
+    """
+    Exactly 14 positions:
+    5 bottom, 2 right, 5 top, 2 left.
+    Each tuple is (x, y, yaw).
+    """
+    bottom_left = PATH_POINTS[0]
+    bottom_right = PATH_POINTS[1]
+    right_lower = PATH_POINTS[2]
+    right_upper = PATH_POINTS[3]
+    top_right = PATH_POINTS[4]
+    top_left = PATH_POINTS[5]
+    left_upper = PATH_POINTS[6]
+    left_lower = PATH_POINTS[7]
+
+    positions = []
+
+    # Bottom path, robot travelling left to right.
+    for ratio in (0.08, 0.29, 0.50, 0.71, 0.92):
+        x, y = interpolate(bottom_left, bottom_right, ratio)
+        positions.append((x, y, 0.0))
+
+    # Right side, travelling upward.
+    for ratio in (0.34, 0.68):
+        x, y = interpolate(right_lower, right_upper, ratio)
+        positions.append((x, y, math.pi / 2.0))
+
+    # Top, travelling right to left.
+    for ratio in (0.08, 0.29, 0.50, 0.71, 0.92):
+        x, y = interpolate(top_right, top_left, ratio)
+        positions.append((x, y, math.pi))
+
+    # Left side, travelling downward.
+    for ratio in (0.34, 0.68):
+        x, y = interpolate(left_upper, left_lower, ratio)
+        positions.append((x, y, -math.pi / 2.0))
+
+    return positions
+
+
+def qr_include(index, x, y, yaw):
+    marker_number = index + 1
+    model_name = f"qr_marker_{marker_number:02d}"
+
+    return f"""
+    <include>
+      <uri>model://{model_name}</uri>
+      <name>{model_name}</name>
+      <pose>{x:.5f} {y:.5f} {QR_Z:.5f} 0 0 {yaw:.5f}</pose>
+    </include>
+    """
+
+
+def generate_qr_markers():
+    includes = []
+    locations = []
+
+    for index, (x, y, yaw) in enumerate(measurement_positions()):
+        marker_id = f"QR_{index + 1:02d}"
+        includes.append(qr_include(index, x, y, yaw))
+        locations.append((marker_id, x, y, yaw))
+
+    return "\n".join(includes), locations
+
+
+def generate_transformer():
+    models = []
+    tank = "0.36 0.37 0.35 1"
+    dark = "0.18 0.19 0.18 1"
+    lid = "0.44 0.45 0.42 1"
+    bushing = "0.30 0.12 0.04 1"
+    metal = "0.50 0.50 0.47 1"
+
+    models.append(
+        box_model(
+            "main_tank", 0.0, 0.0, TRANSFORMER_HEIGHT / 2.0,
+            TRANSFORMER_LENGTH, TRANSFORMER_WIDTH, TRANSFORMER_HEIGHT, tank
+        )
+    )
+    models.append(
+        box_model(
+            "tank_lid", 0.0, 0.0, TRANSFORMER_HEIGHT + 0.14,
+            TRANSFORMER_LENGTH * 1.04, TRANSFORMER_WIDTH * 1.04, 0.28, lid
+        )
+    )
+
+    radiator_x = TRANSFORMER_LENGTH / 2.0 + RADIATOR_DEPTH / 2.0
+    fin_spacing = TRANSFORMER_WIDTH / RADIATOR_FIN_COUNT
+
+    for index in range(RADIATOR_FIN_COUNT):
+        y = -TRANSFORMER_WIDTH / 2.0 + fin_spacing / 2.0 + index * fin_spacing
+        models.append(
+            box_model(
+                f"radiator_fin_{index}",
+                radiator_x, y, RADIATOR_HEIGHT / 2.0,
+                RADIATOR_DEPTH, fin_spacing * 0.48, RADIATOR_HEIGHT, dark
+            )
+        )
+
+    for index, x in enumerate((-1.05, -0.35, 0.35, 1.05)):
+        models.append(
+            cylinder_model(
+                f"bushing_{index}",
+                x, -0.42, TRANSFORMER_HEIGHT + 0.55,
+                0.095, 0.82, bushing
+            )
+        )
+
+    models.append(
+        cylinder_model(
+            "conservator",
+            0.55, 0.48, TRANSFORMER_HEIGHT + 0.80,
+            0.25, 1.35, metal,
+            pitch=math.pi / 2.0,
+        )
+    )
+
+    for y in (-0.78, 0.78):
+        models.append(
+            box_model(
+                f"base_rail_{'a' if y < 0 else 'b'}",
+                0.0, y, 0.11, 3.05, 0.13, 0.22, dark
+            )
+        )
+
+    return "\n".join(models)
+
+
+def generate_path():
+    return "\n".join(
+        visual_line_segment(
+            f"prescribed_contour_{index}",
+            start, end,
+            PATH_LINE_WIDTH, PATH_LINE_HEIGHT,
+            "1 0 0 1",
+        )
+        for index, (start, end) in enumerate(closed_segments(PATH_POINTS))
+    )
+
+
+def generate_dashed_boundary():
+    models = []
+    dash_index = 0
+
+    for start, end in closed_segments(RADIATING_BOUNDARY):
+        x1, y1 = start
+        x2, y2 = end
+        dx = x2 - x1
+        dy = y2 - y1
+        length = math.hypot(dx, dy)
+
+        if length <= 0.0:
+            continue
+
+        unit_x = dx / length
+        unit_y = dy / length
+        distance = 0.0
+
+        while distance < length:
+            dash_end_distance = min(distance + BOUNDARY_DASH_LENGTH, length)
+            dash_start = (x1 + unit_x * distance, y1 + unit_y * distance)
+            dash_end = (x1 + unit_x * dash_end_distance, y1 + unit_y * dash_end_distance)
+
+            models.append(
+                visual_line_segment(
+                    f"boundary_dash_{dash_index}",
+                    dash_start, dash_end,
+                    BOUNDARY_LINE_WIDTH, BOUNDARY_LINE_HEIGHT,
+                    "0.05 0.05 0.05 1",
+                )
+            )
+            dash_index += 1
+            distance += BOUNDARY_DASH_LENGTH + BOUNDARY_DASH_GAP
+
+    return "\n".join(models)
+
+
+def write_csv(locations):
+    CSV_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+    with CSV_PATH.open("w", newline="", encoding="utf-8") as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow(["marker_id", "x", "y", "yaw"])
+
+        for marker_id, x, y, yaw in locations:
+            writer.writerow(
+                [marker_id, f"{x:.5f}", f"{y:.5f}", f"{yaw:.5f}"]
+            )
+
+
+def generate_world():
+    qr_models, locations = generate_qr_markers()
+    write_csv(locations)
+
+    return f"""<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="transformer_infographic_qr_world">
+
+    <gravity>0 0 -9.81</gravity>
+
+    <physics name="ode_physics" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <scene>
+      <ambient>0.72 0.72 0.72 1</ambient>
+      <background>0.88 0.88 0.88 1</background>
+      <shadows>true</shadows>
+    </scene>
+
+    <light name="sun" type="directional">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 12 0 0 0</pose>
+      <diffuse>0.95 0.95 0.95 1</diffuse>
+      <specular>0.25 0.25 0.25 1</specular>
+      <direction>-0.35 0.15 -1</direction>
+    </light>
+
+    <model name="factory_floor">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <pose>0 0 -0.05 0 0 0</pose>
+          <geometry><box><size>{FLOOR_LENGTH} {FLOOR_WIDTH} 0.10</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <pose>0 0 -0.05 0 0 0</pose>
+          <geometry><box><size>{FLOOR_LENGTH} {FLOOR_WIDTH} 0.10</size></box></geometry>
+          <material>
+            <ambient>0.74 0.74 0.71 1</ambient>
+            <diffuse>0.74 0.74 0.71 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    {generate_transformer()}
+
+    {generate_dashed_boundary()}
+
+    {generate_path()}
+
+    {qr_models}
+
+    <gui fullscreen="0">
+      <camera name="overview_camera">
+        <pose>7.8 -9.5 9.0 0 0.67 2.28</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+  </world>
+</sdf>
+"""
+
+
+def main():
+    WORLD_PATH.parent.mkdir(parents=True, exist_ok=True)
+    WORLD_PATH.write_text(generate_world(), encoding="utf-8")
+
+    print(f"Generated QR world: {WORLD_PATH}")
+    print(f"Generated QR location table: {CSV_PATH}")
+    print("QR markers: 14")
+
+
+if __name__ == "__main__":
+    main()

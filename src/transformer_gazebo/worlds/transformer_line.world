@@ -1,0 +1,6454 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="transformer_world">
+
+    <gravity>0 0 -9.81</gravity>
+
+    <physics name="ode_physics" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <scene>
+      <ambient>0.70 0.70 0.70 1</ambient>
+      <background>0.85 0.85 0.85 1</background>
+      <shadows>true</shadows>
+    </scene>
+
+    <light name="sun" type="directional">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 12 0 0 0</pose>
+      <diffuse>0.95 0.95 0.95 1</diffuse>
+      <specular>0.20 0.20 0.20 1</specular>
+      <direction>-0.3 0.2 -1</direction>
+    </light>
+
+    <model name="factory_floor">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <pose>0 0 -0.05 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>24.0 20.0 0.10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <pose>0 0 -0.05 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>24.0 20.0 0.10</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.72 0.72 0.69 1</ambient>
+            <diffuse>0.72 0.72 0.69 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    
+    <model name="transformer_main_body">
+      <static>true</static>
+      <pose>0.0 0.0 1.512 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>7.0 4.0 3.024</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>7.0 4.0 3.024</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.28 0.29 0.27 1</ambient>
+            <diffuse>0.28 0.29 0.27 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="transformer_top">
+      <static>true</static>
+      <pose>0.0 0.0 3.274 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>6.16 3.52 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>6.16 3.52 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.42 0.43 0.40 1</ambient>
+            <diffuse>0.42 0.43 0.40 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="radiator_left">
+      <static>true</static>
+      <pose>0.0 2.225 1.2398399999999998 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>5.04 0.45 2.4796799999999997</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>5.04 0.45 2.4796799999999997</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.18 0.19 0.18 1</ambient>
+            <diffuse>0.18 0.19 0.18 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="radiator_right">
+      <static>true</static>
+      <pose>0.0 -2.225 1.2398399999999998 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>5.04 0.45 2.4796799999999997</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>5.04 0.45 2.4796799999999997</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.18 0.19 0.18 1</ambient>
+            <diffuse>0.18 0.19 0.18 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="conservator_tank">
+      <static>true</static>
+      <pose>0.5 0.0 4.45 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.43</radius>
+              <length>2.3</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.43</radius>
+              <length>2.3</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.28 0.29 0.27 1</ambient>
+            <diffuse>0.28 0.29 0.27 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="transformer_bushing_0">
+      <static>true</static>
+      <pose>-2.1 -0.9 4.65 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.13</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.13</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.20 0.14 0.08 1</ambient>
+            <diffuse>0.20 0.14 0.08 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="transformer_bushing_1">
+      <static>true</static>
+      <pose>-0.7 -0.9 4.65 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.13</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.13</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.20 0.14 0.08 1</ambient>
+            <diffuse>0.20 0.14 0.08 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="transformer_bushing_2">
+      <static>true</static>
+      <pose>0.7 -0.9 4.65 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.13</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.13</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.20 0.14 0.08 1</ambient>
+            <diffuse>0.20 0.14 0.08 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="transformer_bushing_3">
+      <static>true</static>
+      <pose>2.1 -0.9 4.65 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.13</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.13</radius>
+              <length>0.9</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.20 0.14 0.08 1</ambient>
+            <diffuse>0.20 0.14 0.08 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    
+    <model name="path_bottom_0">
+      <static>true</static>
+      <pose>-5.22090 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_1">
+      <static>true</static>
+      <pose>-5.06269 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_2">
+      <static>true</static>
+      <pose>-4.90448 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_3">
+      <static>true</static>
+      <pose>-4.74627 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_4">
+      <static>true</static>
+      <pose>-4.58806 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_5">
+      <static>true</static>
+      <pose>-4.42985 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_6">
+      <static>true</static>
+      <pose>-4.27164 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_7">
+      <static>true</static>
+      <pose>-4.11343 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_8">
+      <static>true</static>
+      <pose>-3.95522 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_9">
+      <static>true</static>
+      <pose>-3.79701 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_10">
+      <static>true</static>
+      <pose>-3.63881 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_11">
+      <static>true</static>
+      <pose>-3.48060 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_12">
+      <static>true</static>
+      <pose>-3.32239 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_13">
+      <static>true</static>
+      <pose>-3.16418 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_14">
+      <static>true</static>
+      <pose>-3.00597 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_15">
+      <static>true</static>
+      <pose>-2.84776 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_16">
+      <static>true</static>
+      <pose>-2.68955 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_17">
+      <static>true</static>
+      <pose>-2.53134 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_18">
+      <static>true</static>
+      <pose>-2.37313 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_19">
+      <static>true</static>
+      <pose>-2.21493 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_20">
+      <static>true</static>
+      <pose>-2.05672 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_21">
+      <static>true</static>
+      <pose>-1.89851 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_22">
+      <static>true</static>
+      <pose>-1.74030 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_23">
+      <static>true</static>
+      <pose>-1.58209 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_24">
+      <static>true</static>
+      <pose>-1.42388 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_25">
+      <static>true</static>
+      <pose>-1.26567 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_26">
+      <static>true</static>
+      <pose>-1.10746 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_27">
+      <static>true</static>
+      <pose>-0.94925 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_28">
+      <static>true</static>
+      <pose>-0.79104 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_29">
+      <static>true</static>
+      <pose>-0.63284 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_30">
+      <static>true</static>
+      <pose>-0.47463 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_31">
+      <static>true</static>
+      <pose>-0.31642 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_32">
+      <static>true</static>
+      <pose>-0.15821 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_33">
+      <static>true</static>
+      <pose>0.00000 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_34">
+      <static>true</static>
+      <pose>0.15821 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_35">
+      <static>true</static>
+      <pose>0.31642 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_36">
+      <static>true</static>
+      <pose>0.47463 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_37">
+      <static>true</static>
+      <pose>0.63284 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_38">
+      <static>true</static>
+      <pose>0.79104 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_39">
+      <static>true</static>
+      <pose>0.94925 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_40">
+      <static>true</static>
+      <pose>1.10746 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_41">
+      <static>true</static>
+      <pose>1.26567 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_42">
+      <static>true</static>
+      <pose>1.42388 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_43">
+      <static>true</static>
+      <pose>1.58209 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_44">
+      <static>true</static>
+      <pose>1.74030 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_45">
+      <static>true</static>
+      <pose>1.89851 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_46">
+      <static>true</static>
+      <pose>2.05672 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_47">
+      <static>true</static>
+      <pose>2.21493 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_48">
+      <static>true</static>
+      <pose>2.37313 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_49">
+      <static>true</static>
+      <pose>2.53134 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_50">
+      <static>true</static>
+      <pose>2.68955 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_51">
+      <static>true</static>
+      <pose>2.84776 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_52">
+      <static>true</static>
+      <pose>3.00597 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_53">
+      <static>true</static>
+      <pose>3.16418 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_54">
+      <static>true</static>
+      <pose>3.32239 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_55">
+      <static>true</static>
+      <pose>3.48060 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_56">
+      <static>true</static>
+      <pose>3.63881 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_57">
+      <static>true</static>
+      <pose>3.79701 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_58">
+      <static>true</static>
+      <pose>3.95522 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_59">
+      <static>true</static>
+      <pose>4.11343 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_60">
+      <static>true</static>
+      <pose>4.27164 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_61">
+      <static>true</static>
+      <pose>4.42985 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_62">
+      <static>true</static>
+      <pose>4.58806 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_63">
+      <static>true</static>
+      <pose>4.74627 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_64">
+      <static>true</static>
+      <pose>4.90448 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_65">
+      <static>true</static>
+      <pose>5.06269 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_bottom_66">
+      <static>true</static>
+      <pose>5.22090 -5.00000 0.00300 0 0 0.00000</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_0">
+      <static>true</static>
+      <pose>5.37848 -4.99743 0.00300 0 0 0.06545</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_1">
+      <static>true</static>
+      <pose>5.53411 -4.97694 0.00300 0 0 0.19635</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_2">
+      <static>true</static>
+      <pose>5.68573 -4.93632 0.00300 0 0 0.32725</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_3">
+      <static>true</static>
+      <pose>5.83075 -4.87625 0.00300 0 0 0.45815</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_4">
+      <static>true</static>
+      <pose>5.96668 -4.79776 0.00300 0 0 0.58905</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_5">
+      <static>true</static>
+      <pose>6.09121 -4.70221 0.00300 0 0 0.71995</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_6">
+      <static>true</static>
+      <pose>6.20221 -4.59121 0.00300 0 0 0.85085</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_7">
+      <static>true</static>
+      <pose>6.29776 -4.46668 0.00300 0 0 0.98175</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_8">
+      <static>true</static>
+      <pose>6.37625 -4.33075 0.00300 0 0 1.11265</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_9">
+      <static>true</static>
+      <pose>6.43632 -4.18573 0.00300 0 0 1.24355</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_10">
+      <static>true</static>
+      <pose>6.47694 -4.03411 0.00300 0 0 1.37445</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_br_11">
+      <static>true</static>
+      <pose>6.49743 -3.87848 0.00300 0 0 1.50535</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_0">
+      <static>true</static>
+      <pose>6.50000 -3.72083 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_1">
+      <static>true</static>
+      <pose>6.50000 -3.56250 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_2">
+      <static>true</static>
+      <pose>6.50000 -3.40417 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_3">
+      <static>true</static>
+      <pose>6.50000 -3.24583 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_4">
+      <static>true</static>
+      <pose>6.50000 -3.08750 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_5">
+      <static>true</static>
+      <pose>6.50000 -2.92917 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_6">
+      <static>true</static>
+      <pose>6.50000 -2.77083 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_7">
+      <static>true</static>
+      <pose>6.50000 -2.61250 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_8">
+      <static>true</static>
+      <pose>6.50000 -2.45417 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_9">
+      <static>true</static>
+      <pose>6.50000 -2.29583 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_10">
+      <static>true</static>
+      <pose>6.50000 -2.13750 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_11">
+      <static>true</static>
+      <pose>6.50000 -1.97917 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_12">
+      <static>true</static>
+      <pose>6.50000 -1.82083 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_13">
+      <static>true</static>
+      <pose>6.50000 -1.66250 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_14">
+      <static>true</static>
+      <pose>6.50000 -1.50417 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_15">
+      <static>true</static>
+      <pose>6.50000 -1.34583 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_16">
+      <static>true</static>
+      <pose>6.50000 -1.18750 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_17">
+      <static>true</static>
+      <pose>6.50000 -1.02917 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_18">
+      <static>true</static>
+      <pose>6.50000 -0.87083 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_19">
+      <static>true</static>
+      <pose>6.50000 -0.71250 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_20">
+      <static>true</static>
+      <pose>6.50000 -0.55417 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_21">
+      <static>true</static>
+      <pose>6.50000 -0.39583 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_22">
+      <static>true</static>
+      <pose>6.50000 -0.23750 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_23">
+      <static>true</static>
+      <pose>6.50000 -0.07917 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_24">
+      <static>true</static>
+      <pose>6.50000 0.07917 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_25">
+      <static>true</static>
+      <pose>6.50000 0.23750 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_26">
+      <static>true</static>
+      <pose>6.50000 0.39583 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_27">
+      <static>true</static>
+      <pose>6.50000 0.55417 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_28">
+      <static>true</static>
+      <pose>6.50000 0.71250 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_29">
+      <static>true</static>
+      <pose>6.50000 0.87083 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_30">
+      <static>true</static>
+      <pose>6.50000 1.02917 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_31">
+      <static>true</static>
+      <pose>6.50000 1.18750 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_32">
+      <static>true</static>
+      <pose>6.50000 1.34583 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_33">
+      <static>true</static>
+      <pose>6.50000 1.50417 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_34">
+      <static>true</static>
+      <pose>6.50000 1.66250 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_35">
+      <static>true</static>
+      <pose>6.50000 1.82083 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_36">
+      <static>true</static>
+      <pose>6.50000 1.97917 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_37">
+      <static>true</static>
+      <pose>6.50000 2.13750 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_38">
+      <static>true</static>
+      <pose>6.50000 2.29583 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_39">
+      <static>true</static>
+      <pose>6.50000 2.45417 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_40">
+      <static>true</static>
+      <pose>6.50000 2.61250 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_41">
+      <static>true</static>
+      <pose>6.50000 2.77083 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_42">
+      <static>true</static>
+      <pose>6.50000 2.92917 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_43">
+      <static>true</static>
+      <pose>6.50000 3.08750 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_44">
+      <static>true</static>
+      <pose>6.50000 3.24583 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_45">
+      <static>true</static>
+      <pose>6.50000 3.40417 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_46">
+      <static>true</static>
+      <pose>6.50000 3.56250 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_right_47">
+      <static>true</static>
+      <pose>6.50000 3.72083 0.00300 0 0 1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_0">
+      <static>true</static>
+      <pose>6.49743 3.87848 0.00300 0 0 1.63625</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_1">
+      <static>true</static>
+      <pose>6.47694 4.03411 0.00300 0 0 1.76715</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_2">
+      <static>true</static>
+      <pose>6.43632 4.18573 0.00300 0 0 1.89805</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_3">
+      <static>true</static>
+      <pose>6.37625 4.33075 0.00300 0 0 2.02895</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_4">
+      <static>true</static>
+      <pose>6.29776 4.46668 0.00300 0 0 2.15984</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_5">
+      <static>true</static>
+      <pose>6.20221 4.59121 0.00300 0 0 2.29074</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_6">
+      <static>true</static>
+      <pose>6.09121 4.70221 0.00300 0 0 2.42164</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_7">
+      <static>true</static>
+      <pose>5.96668 4.79776 0.00300 0 0 2.55254</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_8">
+      <static>true</static>
+      <pose>5.83075 4.87625 0.00300 0 0 2.68344</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_9">
+      <static>true</static>
+      <pose>5.68573 4.93632 0.00300 0 0 2.81434</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_10">
+      <static>true</static>
+      <pose>5.53411 4.97694 0.00300 0 0 2.94524</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tr_11">
+      <static>true</static>
+      <pose>5.37848 4.99743 0.00300 0 0 3.07614</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_0">
+      <static>true</static>
+      <pose>5.22090 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_1">
+      <static>true</static>
+      <pose>5.06269 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_2">
+      <static>true</static>
+      <pose>4.90448 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_3">
+      <static>true</static>
+      <pose>4.74627 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_4">
+      <static>true</static>
+      <pose>4.58806 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_5">
+      <static>true</static>
+      <pose>4.42985 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_6">
+      <static>true</static>
+      <pose>4.27164 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_7">
+      <static>true</static>
+      <pose>4.11343 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_8">
+      <static>true</static>
+      <pose>3.95522 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_9">
+      <static>true</static>
+      <pose>3.79701 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_10">
+      <static>true</static>
+      <pose>3.63881 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_11">
+      <static>true</static>
+      <pose>3.48060 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_12">
+      <static>true</static>
+      <pose>3.32239 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_13">
+      <static>true</static>
+      <pose>3.16418 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_14">
+      <static>true</static>
+      <pose>3.00597 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_15">
+      <static>true</static>
+      <pose>2.84776 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_16">
+      <static>true</static>
+      <pose>2.68955 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_17">
+      <static>true</static>
+      <pose>2.53134 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_18">
+      <static>true</static>
+      <pose>2.37313 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_19">
+      <static>true</static>
+      <pose>2.21493 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_20">
+      <static>true</static>
+      <pose>2.05672 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_21">
+      <static>true</static>
+      <pose>1.89851 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_22">
+      <static>true</static>
+      <pose>1.74030 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_23">
+      <static>true</static>
+      <pose>1.58209 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_24">
+      <static>true</static>
+      <pose>1.42388 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_25">
+      <static>true</static>
+      <pose>1.26567 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_26">
+      <static>true</static>
+      <pose>1.10746 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_27">
+      <static>true</static>
+      <pose>0.94925 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_28">
+      <static>true</static>
+      <pose>0.79104 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_29">
+      <static>true</static>
+      <pose>0.63284 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_30">
+      <static>true</static>
+      <pose>0.47463 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_31">
+      <static>true</static>
+      <pose>0.31642 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_32">
+      <static>true</static>
+      <pose>0.15821 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_33">
+      <static>true</static>
+      <pose>0.00000 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_34">
+      <static>true</static>
+      <pose>-0.15821 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_35">
+      <static>true</static>
+      <pose>-0.31642 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_36">
+      <static>true</static>
+      <pose>-0.47463 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_37">
+      <static>true</static>
+      <pose>-0.63284 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_38">
+      <static>true</static>
+      <pose>-0.79104 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_39">
+      <static>true</static>
+      <pose>-0.94925 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_40">
+      <static>true</static>
+      <pose>-1.10746 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_41">
+      <static>true</static>
+      <pose>-1.26567 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_42">
+      <static>true</static>
+      <pose>-1.42388 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_43">
+      <static>true</static>
+      <pose>-1.58209 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_44">
+      <static>true</static>
+      <pose>-1.74030 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_45">
+      <static>true</static>
+      <pose>-1.89851 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_46">
+      <static>true</static>
+      <pose>-2.05672 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_47">
+      <static>true</static>
+      <pose>-2.21493 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_48">
+      <static>true</static>
+      <pose>-2.37313 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_49">
+      <static>true</static>
+      <pose>-2.53134 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_50">
+      <static>true</static>
+      <pose>-2.68955 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_51">
+      <static>true</static>
+      <pose>-2.84776 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_52">
+      <static>true</static>
+      <pose>-3.00597 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_53">
+      <static>true</static>
+      <pose>-3.16418 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_54">
+      <static>true</static>
+      <pose>-3.32239 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_55">
+      <static>true</static>
+      <pose>-3.48060 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_56">
+      <static>true</static>
+      <pose>-3.63881 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_57">
+      <static>true</static>
+      <pose>-3.79701 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_58">
+      <static>true</static>
+      <pose>-3.95522 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_59">
+      <static>true</static>
+      <pose>-4.11343 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_60">
+      <static>true</static>
+      <pose>-4.27164 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_61">
+      <static>true</static>
+      <pose>-4.42985 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_62">
+      <static>true</static>
+      <pose>-4.58806 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_63">
+      <static>true</static>
+      <pose>-4.74627 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_64">
+      <static>true</static>
+      <pose>-4.90448 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_65">
+      <static>true</static>
+      <pose>-5.06269 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_top_66">
+      <static>true</static>
+      <pose>-5.22090 5.00000 0.00300 0 0 3.14159</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16821 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_0">
+      <static>true</static>
+      <pose>-5.37848 4.99743 0.00300 0 0 3.20704</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_1">
+      <static>true</static>
+      <pose>-5.53411 4.97694 0.00300 0 0 3.33794</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_2">
+      <static>true</static>
+      <pose>-5.68573 4.93632 0.00300 0 0 3.46884</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_3">
+      <static>true</static>
+      <pose>-5.83075 4.87625 0.00300 0 0 3.59974</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_4">
+      <static>true</static>
+      <pose>-5.96668 4.79776 0.00300 0 0 3.73064</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_5">
+      <static>true</static>
+      <pose>-6.09121 4.70221 0.00300 0 0 3.86154</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_6">
+      <static>true</static>
+      <pose>-6.20221 4.59121 0.00300 0 0 3.99244</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_7">
+      <static>true</static>
+      <pose>-6.29776 4.46668 0.00300 0 0 4.12334</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_8">
+      <static>true</static>
+      <pose>-6.37625 4.33075 0.00300 0 0 4.25424</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_9">
+      <static>true</static>
+      <pose>-6.43632 4.18573 0.00300 0 0 4.38514</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_10">
+      <static>true</static>
+      <pose>-6.47694 4.03411 0.00300 0 0 4.51604</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_tl_11">
+      <static>true</static>
+      <pose>-6.49743 3.87848 0.00300 0 0 4.64694</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_0">
+      <static>true</static>
+      <pose>-6.50000 3.72083 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_1">
+      <static>true</static>
+      <pose>-6.50000 3.56250 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_2">
+      <static>true</static>
+      <pose>-6.50000 3.40417 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_3">
+      <static>true</static>
+      <pose>-6.50000 3.24583 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_4">
+      <static>true</static>
+      <pose>-6.50000 3.08750 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_5">
+      <static>true</static>
+      <pose>-6.50000 2.92917 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_6">
+      <static>true</static>
+      <pose>-6.50000 2.77083 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_7">
+      <static>true</static>
+      <pose>-6.50000 2.61250 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_8">
+      <static>true</static>
+      <pose>-6.50000 2.45417 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_9">
+      <static>true</static>
+      <pose>-6.50000 2.29583 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_10">
+      <static>true</static>
+      <pose>-6.50000 2.13750 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_11">
+      <static>true</static>
+      <pose>-6.50000 1.97917 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_12">
+      <static>true</static>
+      <pose>-6.50000 1.82083 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_13">
+      <static>true</static>
+      <pose>-6.50000 1.66250 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_14">
+      <static>true</static>
+      <pose>-6.50000 1.50417 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_15">
+      <static>true</static>
+      <pose>-6.50000 1.34583 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_16">
+      <static>true</static>
+      <pose>-6.50000 1.18750 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_17">
+      <static>true</static>
+      <pose>-6.50000 1.02917 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_18">
+      <static>true</static>
+      <pose>-6.50000 0.87083 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_19">
+      <static>true</static>
+      <pose>-6.50000 0.71250 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_20">
+      <static>true</static>
+      <pose>-6.50000 0.55417 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_21">
+      <static>true</static>
+      <pose>-6.50000 0.39583 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_22">
+      <static>true</static>
+      <pose>-6.50000 0.23750 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_23">
+      <static>true</static>
+      <pose>-6.50000 0.07917 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_24">
+      <static>true</static>
+      <pose>-6.50000 -0.07917 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_25">
+      <static>true</static>
+      <pose>-6.50000 -0.23750 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_26">
+      <static>true</static>
+      <pose>-6.50000 -0.39583 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_27">
+      <static>true</static>
+      <pose>-6.50000 -0.55417 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_28">
+      <static>true</static>
+      <pose>-6.50000 -0.71250 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_29">
+      <static>true</static>
+      <pose>-6.50000 -0.87083 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_30">
+      <static>true</static>
+      <pose>-6.50000 -1.02917 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_31">
+      <static>true</static>
+      <pose>-6.50000 -1.18750 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_32">
+      <static>true</static>
+      <pose>-6.50000 -1.34583 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_33">
+      <static>true</static>
+      <pose>-6.50000 -1.50417 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_34">
+      <static>true</static>
+      <pose>-6.50000 -1.66250 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_35">
+      <static>true</static>
+      <pose>-6.50000 -1.82083 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_36">
+      <static>true</static>
+      <pose>-6.50000 -1.97917 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_37">
+      <static>true</static>
+      <pose>-6.50000 -2.13750 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_38">
+      <static>true</static>
+      <pose>-6.50000 -2.29583 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_39">
+      <static>true</static>
+      <pose>-6.50000 -2.45417 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_40">
+      <static>true</static>
+      <pose>-6.50000 -2.61250 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_41">
+      <static>true</static>
+      <pose>-6.50000 -2.77083 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_42">
+      <static>true</static>
+      <pose>-6.50000 -2.92917 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_43">
+      <static>true</static>
+      <pose>-6.50000 -3.08750 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_44">
+      <static>true</static>
+      <pose>-6.50000 -3.24583 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_45">
+      <static>true</static>
+      <pose>-6.50000 -3.40417 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_46">
+      <static>true</static>
+      <pose>-6.50000 -3.56250 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_left_47">
+      <static>true</static>
+      <pose>-6.50000 -3.72083 0.00300 0 0 -1.57080</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.16833 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_0">
+      <static>true</static>
+      <pose>-6.49743 -3.87848 0.00300 0 0 4.77784</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_1">
+      <static>true</static>
+      <pose>-6.47694 -4.03411 0.00300 0 0 4.90874</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_2">
+      <static>true</static>
+      <pose>-6.43632 -4.18573 0.00300 0 0 5.03964</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_3">
+      <static>true</static>
+      <pose>-6.37625 -4.33075 0.00300 0 0 5.17054</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_4">
+      <static>true</static>
+      <pose>-6.29776 -4.46668 0.00300 0 0 5.30144</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_5">
+      <static>true</static>
+      <pose>-6.20221 -4.59121 0.00300 0 0 5.43234</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_6">
+      <static>true</static>
+      <pose>-6.09121 -4.70221 0.00300 0 0 5.56324</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_7">
+      <static>true</static>
+      <pose>-5.96668 -4.79776 0.00300 0 0 5.69414</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_8">
+      <static>true</static>
+      <pose>-5.83075 -4.87625 0.00300 0 0 5.82504</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_9">
+      <static>true</static>
+      <pose>-5.68573 -4.93632 0.00300 0 0 5.95594</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_10">
+      <static>true</static>
+      <pose>-5.53411 -4.97694 0.00300 0 0 6.08684</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    <model name="path_corner_bl_11">
+      <static>true</static>
+      <pose>-5.37848 -4.99743 0.00300 0 0 6.21774</pose>
+      <link name="link">
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.17708 0.12000 0.00600</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.35 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+
+    
+    <include>
+      <uri>model://qr_marker_000</uri>
+      <name>qr_marker_000</name>
+      <pose>-5.30000 -5.00000 0.01200 0 0 0.00000</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_001</uri>
+      <name>qr_marker_001</name>
+      <pose>-4.30000 -5.00000 0.01200 0 0 0.00000</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_002</uri>
+      <name>qr_marker_002</name>
+      <pose>-3.30000 -5.00000 0.01200 0 0 0.00000</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_003</uri>
+      <name>qr_marker_003</name>
+      <pose>-2.30000 -5.00000 0.01200 0 0 0.00000</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_004</uri>
+      <name>qr_marker_004</name>
+      <pose>-1.30000 -5.00000 0.01200 0 0 0.00000</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_005</uri>
+      <name>qr_marker_005</name>
+      <pose>-0.30000 -5.00000 0.01200 0 0 0.00000</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_006</uri>
+      <name>qr_marker_006</name>
+      <pose>0.70000 -5.00000 0.01200 0 0 0.00000</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_007</uri>
+      <name>qr_marker_007</name>
+      <pose>1.75000 -5.00000 0.01200 0 0 0.00000</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_008</uri>
+      <name>qr_marker_008</name>
+      <pose>2.80000 -5.00000 0.01200 0 0 0.00000</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_009</uri>
+      <name>qr_marker_009</name>
+      <pose>3.80000 -5.00000 0.01200 0 0 0.00000</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_010</uri>
+      <name>qr_marker_010</name>
+      <pose>4.80000 -5.00000 0.01200 0 0 0.00000</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_011</uri>
+      <name>qr_marker_011</name>
+      <pose>5.82704 -4.87807 0.01200 0 0 0.45470</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_012</uri>
+      <name>qr_marker_012</name>
+      <pose>6.46328 -4.09458 0.01200 0 0 1.32278</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_013</uri>
+      <name>qr_marker_013</name>
+      <pose>6.50000 -3.05000 0.01200 0 0 1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_014</uri>
+      <name>qr_marker_014</name>
+      <pose>6.50000 -2.05000 0.01200 0 0 1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_015</uri>
+      <name>qr_marker_015</name>
+      <pose>6.50000 -1.05000 0.01200 0 0 1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_016</uri>
+      <name>qr_marker_016</name>
+      <pose>6.50000 0.00000 0.01200 0 0 1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_017</uri>
+      <name>qr_marker_017</name>
+      <pose>6.50000 1.00000 0.01200 0 0 1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_018</uri>
+      <name>qr_marker_018</name>
+      <pose>6.50000 2.00000 0.01200 0 0 1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_019</uri>
+      <name>qr_marker_019</name>
+      <pose>6.50000 3.00000 0.01200 0 0 1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_020</uri>
+      <name>qr_marker_020</name>
+      <pose>6.47446 4.04626 0.01200 0 0 1.77748</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_021</uri>
+      <name>qr_marker_021</name>
+      <pose>5.87114 4.85537 0.01200 0 0 2.64555</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_022</uri>
+      <name>qr_marker_022</name>
+      <pose>4.85000 5.00000 0.01200 0 0 3.14159</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_023</uri>
+      <name>qr_marker_023</name>
+      <pose>3.85000 5.00000 0.01200 0 0 3.14159</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_024</uri>
+      <name>qr_marker_024</name>
+      <pose>2.85000 5.00000 0.01200 0 0 3.14159</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_025</uri>
+      <name>qr_marker_025</name>
+      <pose>1.80000 5.00000 0.01200 0 0 3.14159</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_026</uri>
+      <name>qr_marker_026</name>
+      <pose>0.80000 5.00000 0.01200 0 0 3.14159</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_027</uri>
+      <name>qr_marker_027</name>
+      <pose>-0.20000 5.00000 0.01200 0 0 3.14159</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_028</uri>
+      <name>qr_marker_028</name>
+      <pose>-1.25000 5.00000 0.01200 0 0 3.14159</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_029</uri>
+      <name>qr_marker_029</name>
+      <pose>-2.25000 5.00000 0.01200 0 0 3.14159</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_030</uri>
+      <name>qr_marker_030</name>
+      <pose>-3.30000 5.00000 0.01200 0 0 3.14159</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_031</uri>
+      <name>qr_marker_031</name>
+      <pose>-4.30000 5.00000 0.01200 0 0 3.14159</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_032</uri>
+      <name>qr_marker_032</name>
+      <pose>-5.30000 5.00000 0.01200 0 0 3.14159</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_033</uri>
+      <name>qr_marker_033</name>
+      <pose>-6.21570 4.57556 0.01200 0 0 4.00966</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_034</uri>
+      <name>qr_marker_034</name>
+      <pose>-6.50000 3.60000 0.01200 0 0 -1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_035</uri>
+      <name>qr_marker_035</name>
+      <pose>-6.50000 2.60000 0.01200 0 0 -1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_036</uri>
+      <name>qr_marker_036</name>
+      <pose>-6.50000 1.60000 0.01200 0 0 -1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_037</uri>
+      <name>qr_marker_037</name>
+      <pose>-6.50000 0.55000 0.01200 0 0 -1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_038</uri>
+      <name>qr_marker_038</name>
+      <pose>-6.50000 -0.45000 0.01200 0 0 -1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_039</uri>
+      <name>qr_marker_039</name>
+      <pose>-6.50000 -1.45000 0.01200 0 0 -1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_040</uri>
+      <name>qr_marker_040</name>
+      <pose>-6.50000 -2.50000 0.01200 0 0 -1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_041</uri>
+      <name>qr_marker_041</name>
+      <pose>-6.50000 -3.50000 0.01200 0 0 -1.57080</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_042</uri>
+      <name>qr_marker_042</name>
+      <pose>-6.27662 -4.49729 0.01200 0 0 5.33244</pose>
+    </include>
+    
+
+    <include>
+      <uri>model://qr_marker_043</uri>
+      <name>qr_marker_043</name>
+      <pose>-5.39910 -4.99590 0.01200 0 0 6.20051</pose>
+    </include>
+    
+
+    <gui fullscreen="0">
+      <camera name="overview_camera">
+        <pose>11 -13 14 0 0.65 2.35</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+  </world>
+</sdf>

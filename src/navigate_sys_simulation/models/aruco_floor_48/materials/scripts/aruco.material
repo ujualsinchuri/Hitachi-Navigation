@@ -1,0 +1,19 @@
+material ArUco/Floor48
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      depth_write on
+      cull_hardware none
+      cull_software none
+
+      texture_unit
+      {
+        texture aruco_48.png
+        filtering none
+      }
+    }
+  }
+}

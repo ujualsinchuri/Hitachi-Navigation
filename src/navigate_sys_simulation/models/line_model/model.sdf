@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="line_model">
+    <static>true</static>
+
+    <link name="line_link">
+      <visual name="line_visual">
+        <geometry>
+          <mesh>
+            <uri>model://line_model/meshes/Line.stl</uri>
+            <scale>1.220000 1.220000 1.000000</scale>
+          </mesh>
+        </geometry>
+
+        <material>
+          <ambient>1 0 0 1</ambient>
+          <diffuse>1 0 0 1</diffuse>
+          <emissive>1 0 0 1</emissive>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
