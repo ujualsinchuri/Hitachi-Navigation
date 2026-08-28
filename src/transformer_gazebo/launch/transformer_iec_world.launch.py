@@ -16,7 +16,7 @@ def generate_launch_description():
     turtlebot3_gazebo_share = get_package_share_directory(
         "turtlebot3_gazebo"
     )
-karma
+karmajkhfkljadhs
     world_file = os.path.join(
         package_share,
         "worlds",
