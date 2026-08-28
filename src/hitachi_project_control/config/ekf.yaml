@@ -1,0 +1,59 @@
+ekf_filter_node:
+  ros__parameters:
+    permit_message_delay: true
+    history_length: 100.0
+    use_sim_time: true
+    frequency: 30.0
+    two_d_mode: true          # robot moves on flat ground -- ignore z, roll, pitch
+    publish_tf: true          # this node will publish map -> odom for you
+    predict_to_current_time: true  # keep publishing continuously between sensor updates,
+                                    # not only when a new measurement arrives
+
+    # Explicit process noise (Q). Defaults are tuned for noisy real sensors --
+    # your simulated odometry is much more accurate, so leaving Q at default
+    # overstates how fast uncertainty should grow, causing exaggerated
+    # covariance wedges and oversized corrections. State order:
+    # [x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az]
+# BUG 2 FIX: X (Row 1), Y (Row 2), and Yaw (Row 6) are set to 0.05.
+    # This restores the Kalman Gain, forcing the filter to listen to the camera!
+    # process_noise_covariance: [1e-6, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+    #                            0.0,  1e-6, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+    #                            0.0,  0.0,  1e-6, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+    #                            0.0,  0.0,  0.0,  1e-6, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+    #                            0.0,  0.0,  0.0,  0.0,  1e-6, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+    #                            0.0,  0.0,  0.0,  0.0,  0.0,  1e-6, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+    #                            0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-6, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+    #                            0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-6, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+    #                            0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-6, 0.0,  0.0,  0.0,  0.0,  0.0,  0.0,
+    #                            0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-6, 0.0,  0.0,  0.0,  0.0,  0.0,
+    #                            0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-6, 0.0,  0.0,  0.0,  0.0,
+    #                            0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-6, 0.0,  0.0,  0.0,
+    #                            0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-6, 0.0,  0.0,
+    #                            0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-6, 0.0,
+    #                            0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  0.0,  1e-6]
+
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_footprint
+    world_frame: map          # output pose is expressed in map
+
+    # ---- Input 0: continuous wheel odometry ----
+    odom0: /odom
+    odom0_config: [true,  true,  false,   # x, y, z
+                    false, false, true,    # roll, pitch, yaw
+                    false, false, false,   # vx, vy, vz
+                    false, false, false,   # vroll, vpitch, vyaw
+                    false, false, false]   # ax, ay, az
+    odom0_differential: false
+    odom0_queue_size: 10
+
+    # ---- Input 1: intermittent aruco-based pose correction ----
+    pose0: /aruco_estimated_pose
+    pose0_config: [true,  true,  false,
+                    false, false, true,
+                    false, false, false,
+                    false, false, false,
+                    false, false, false]
+    pose0_differential: false
+    pose0_queue_size: 10
+    pose0_rejection_threshold: 5.0   # Mahalanobis distance -- rejects wild outlier readings

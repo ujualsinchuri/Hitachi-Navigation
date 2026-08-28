@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="hitachi_project_environment">
+    <!-- VERY IMPORTANT: Set to true if this is the floor/walls so it doesn't fall due to gravity -->
+    <static>true</static> 
+    <link name="link">
+
+      <!-- Transformer -->
+      <collision name="transformer_collision_1">
+        <geometry>
+          <mesh>
+            <uri>file:///home/ujualsin/ros2_ws/src/hitachi_project_environment/models/meshes/Transformer.stl</uri>
+            <!-- Note: If your STL was exported in millimeters, change scale to 0.001 0.001 0.001 -->
+            <scale>0.5 0.5 0.5</scale> 
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="transformer_visual_1">
+        <geometry>
+          <mesh>
+            <uri>file:///home/ujualsin/ros2_ws/src/hitachi_project_environment/models/meshes/Transformer.stl</uri>
+            <scale>0.5 0.5 0.5</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1.0</ambient>
+          <diffuse>0.5 0.5 0.5 1.0</diffuse>
+        </material>
+      </visual>
+
+      <!-- Line -->
+      <!-- <collision name="collision_2">
+        <pose>0.0 0.0 0.001 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>file:///home/ujualsin/ros2_ws/src/hitachi_project_environment/models/meshes/Line.stl</uri>
+            <scale>0.6 0.6 0.6</scale>
+          </mesh>
+        </geometry>
+      </collision> -->
+      <visual name="line_visual_2">
+        <pose>0.0 0.0 0.001 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>file:///home/ujualsin/ros2_ws/src/hitachi_project_environment/models/meshes/Line.stl</uri>
+            <scale>0.6 0.6 0.6</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>1.0 0.0 0.0 1.0</ambient>
+          <diffuse>1.0 0.0 0.0 1.0</diffuse>
+        </material>
+      </visual>
+
+    </link>
+  </model>
+</sdf>
