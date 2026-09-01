@@ -16,7 +16,7 @@ using namespace std::chrono_literals;
 // Determined once against aruco_0 (world yaw = 0, needed +90 deg in code).
 // This is a property of the detection pipeline's convention, not of any
 // individual marker, so it's applied uniformly to every marker here.
-static constexpr double YAW_CORRECTION = 1.570796;
+static constexpr double YAW_CORRECTION = -1.570796;
 
 struct MarkerPose {
     double x, y, z;
@@ -58,9 +58,19 @@ private:
         tf2::Transform map_to_robot_camera;
         bool have_camera_estimate = false;
         int seen_marker_id = -1;
+        rclcpp::Time best_stamp(0, 0, this->get_clock()->get_clock_type());
 
-        // Try every known marker each cycle. Usually at most one will be
-        // visible at a time given the marker spacing, so the first hit wins.
+        // Try every known marker each cycle, but don't just take the first
+        // ID that resolves -- TF keeps old transforms resolvable for several
+        // seconds after a marker leaves view, so an early low-ID marker can
+        // keep "winning" long after the robot has moved on to a different
+        // one. Instead, check every candidate's actual timestamp and only
+        // trust the freshest one that's recent enough to be a real, current
+        // detection (not stale cached data).
+        const double MAX_AGE_SEC = 0.3;  // aruco_read publishes at ~30Hz, so
+                                          // a real detection should be well
+                                          // under this age
+
         for (const auto &entry : marker_poses_) {
             int id = entry.first;
             const MarkerPose &mp = entry.second;
@@ -70,23 +80,34 @@ private:
                 geometry_msgs::msg::TransformStamped marker_to_robot_msg =
                     tf_buffer_->lookupTransform(marker_frame, "base_footprint", tf2::TimePointZero);
 
-                tf2::Transform marker_to_robot_tf2;
-                tf2::fromMsg(marker_to_robot_msg.transform, marker_to_robot_tf2);
+                rclcpp::Time stamp(marker_to_robot_msg.header.stamp, this->get_clock()->get_clock_type());
+                double age = (this->get_clock()->now() - stamp).seconds();
 
-                tf2::Transform map_to_marker;
-                map_to_marker.setOrigin(tf2::Vector3(mp.x, mp.y, mp.z));
+                if (age > MAX_AGE_SEC) {
+                    // stale cached data from a marker no longer in view -- skip it
+                    continue;
+                }
 
-                tf2::Quaternion q_marker;
-                q_marker.setRPY(0, 0, mp.yaw + YAW_CORRECTION);
-                map_to_marker.setRotation(q_marker);
+                // keep only the most recent candidate seen this cycle
+                if (!have_camera_estimate || stamp > best_stamp) {
+                    tf2::Transform marker_to_robot_tf2;
+                    tf2::fromMsg(marker_to_robot_msg.transform, marker_to_robot_tf2);
 
-                map_to_robot_camera = map_to_marker * marker_to_robot_tf2;
-                have_camera_estimate = true;
-                seen_marker_id = id;
-                break;  // stop at the first marker actually in view
+                    tf2::Transform map_to_marker;
+                    map_to_marker.setOrigin(tf2::Vector3(mp.x, mp.y, mp.z));
+
+                    tf2::Quaternion q_marker;
+                    q_marker.setRPY(0, 0, mp.yaw + YAW_CORRECTION);
+                    map_to_marker.setRotation(q_marker);
+
+                    map_to_robot_camera = map_to_marker * marker_to_robot_tf2;
+                    have_camera_estimate = true;
+                    seen_marker_id = id;
+                    best_stamp = stamp;
+                }
             }
             catch (const tf2::TransformException &ex) {
-                // leave empty
+                // this particular marker not visible this cycle -- try the next
             }
         }
 
@@ -100,6 +121,27 @@ private:
             have_odom = true;
         }
         catch (const tf2::TransformException &ex) {
+        }
+
+        // Hard sanity bound: reject any correction that lands outside the
+        // physically possible map extent. A single bad detection (motion
+        // blur, misidentified corners, marker too small in-frame) can
+        // otherwise get fused with high confidence and lock the filter onto
+        // a wrong belief it can never recover from -- this catches that
+        // before it's even treated as a real detection.
+        if (have_camera_estimate) {
+            const double MAP_X_MIN = -4.0, MAP_X_MAX = 3.5;
+            const double MAP_Y_MIN = -6.0, MAP_Y_MAX = 4.0;
+
+            double px = map_to_robot_camera.getOrigin().x();
+            double py = map_to_robot_camera.getOrigin().y();
+
+            if (px < MAP_X_MIN || px > MAP_X_MAX || py < MAP_Y_MIN || py > MAP_Y_MAX) {
+                RCLCPP_WARN(this->get_logger(),
+                    "[aruco_%d] Rejected implausible correction: (%.2f, %.2f) is outside map bounds",
+                    seen_marker_id, px, py);
+                have_camera_estimate = false;
+            }
         }
 
         if (have_odom) {
