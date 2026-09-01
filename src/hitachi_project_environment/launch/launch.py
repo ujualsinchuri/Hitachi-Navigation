@@ -2,6 +2,7 @@ import os
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription, SetEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
@@ -21,6 +22,18 @@ def generate_launch_description():
     set_tb3_model = SetEnvironmentVariable(
         name='TURTLEBOT3_MODEL',
         value='waffle'
+    )
+
+    #Define Rviz config file path
+    rviz_config_file = os.path.join(pkg_share, 'rviz', 'transformer_nav.rviz')
+
+    start_rviz = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', rviz_config_file],
+        parameters=[{'use_sim_time': True}] # <-- CRITICAL FOR GAZEBO SYNC
     )
 
     # 3. Find gazebo_ros and turtlebot3_gazebo packages
@@ -59,5 +72,6 @@ def generate_launch_description():
         gzserver,
         gzclient,
         robot_state_pub,
-        spawn_turtlebot
+        spawn_turtlebot,
+        start_rviz
     ])

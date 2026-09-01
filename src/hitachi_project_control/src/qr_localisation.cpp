@@ -6,8 +6,22 @@
 #include <tf2/LinearMath/Transform.h>
 #include <tf2/utils.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+#include <map>
+#include <vector>
 
 using namespace std::chrono_literals;
+
+// Fixed empirical correction between a marker's world-file yaw and what
+// aruco_read.cpp's detected orientation actually needs to line up correctly.
+// Determined once against aruco_0 (world yaw = 0, needed +90 deg in code).
+// This is a property of the detection pipeline's convention, not of any
+// individual marker, so it's applied uniformly to every marker here.
+static constexpr double YAW_CORRECTION = 1.570796;
+
+struct MarkerPose {
+    double x, y, z;
+    double yaw;  // world-file yaw; YAW_CORRECTION is added automatically
+};
 
 class ArucoLocalisation : public rclcpp::Node
 {
@@ -20,9 +34,22 @@ public:
         aruco_pose_pub_ = this->create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>(
             "/aruco_estimated_pose", 10);
 
+        // Known marker poses in the map/world frame -- from your Gazebo world file.
+        marker_poses_[0] = {2.51054,  -3.201,     0.006943, 0.0};
+        marker_poses_[1] = {2.56241,  -0.582878,  0.006943, 0.0};
+        marker_poses_[2] = {2.02958,   1.67102,   0.006943, 0.0};
+        marker_poses_[3] = {0.351743,  3.02532,   0.006943, 0.0};
+        marker_poses_[4] = {-1.85735,  2.26292,   0.006943, 0.0};
+        marker_poses_[5] = {-3.0818,  -1.22764,   0.006943, 0.0};
+        marker_poses_[6] = {-3.30187,  0.931401,  0.006943, 0.0};
+        marker_poses_[7] = {-2.70917, -3.47177,   0.006943, 0.0};
+        marker_poses_[8] = {-1.42631, -5.30261,   0.006943, 0.0};
+        marker_poses_[9] = {0.923339, -5.13537,   0.006943, 0.0};
+
         timer = this->create_wall_timer(100ms, std::bind(&ArucoLocalisation::checkPosition, this));
 
-        RCLCPP_INFO(this->get_logger(), "ArucoLocalisation node started. Publishing to /aruco_estimated_pose");
+        RCLCPP_INFO(this->get_logger(), "ArucoLocalisation node started with %zu known markers. Publishing to /aruco_estimated_pose",
+                    marker_poses_.size());
     }
 
 private:
@@ -30,26 +57,37 @@ private:
     {
         tf2::Transform map_to_robot_camera;
         bool have_camera_estimate = false;
+        int seen_marker_id = -1;
 
-        try {
-            geometry_msgs::msg::TransformStamped marker_to_robot_msg =
-                tf_buffer_->lookupTransform("aruco_0", "base_footprint", tf2::TimePointZero);
+        // Try every known marker each cycle. Usually at most one will be
+        // visible at a time given the marker spacing, so the first hit wins.
+        for (const auto &entry : marker_poses_) {
+            int id = entry.first;
+            const MarkerPose &mp = entry.second;
+            std::string marker_frame = "aruco_" + std::to_string(id);
 
-            tf2::Transform marker_to_robot_tf2;
-            tf2::fromMsg(marker_to_robot_msg.transform, marker_to_robot_tf2);
+            try {
+                geometry_msgs::msg::TransformStamped marker_to_robot_msg =
+                    tf_buffer_->lookupTransform(marker_frame, "base_footprint", tf2::TimePointZero);
 
-            tf2::Transform map_to_marker;
-            map_to_marker.setOrigin(tf2::Vector3(2.24272, -4.92731, 0.006943));
+                tf2::Transform marker_to_robot_tf2;
+                tf2::fromMsg(marker_to_robot_msg.transform, marker_to_robot_tf2);
 
-            tf2::Quaternion q_marker;
-            q_marker.setRPY(0, 0, -1.570796);  
-            map_to_marker.setRotation(q_marker);
+                tf2::Transform map_to_marker;
+                map_to_marker.setOrigin(tf2::Vector3(mp.x, mp.y, mp.z));
 
-            map_to_robot_camera = map_to_marker * marker_to_robot_tf2;
-            have_camera_estimate = true;
-        }
-        catch (const tf2::TransformException &ex) {
-            // marker not visible this cycle
+                tf2::Quaternion q_marker;
+                q_marker.setRPY(0, 0, mp.yaw + YAW_CORRECTION);
+                map_to_marker.setRotation(q_marker);
+
+                map_to_robot_camera = map_to_marker * marker_to_robot_tf2;
+                have_camera_estimate = true;
+                seen_marker_id = id;
+                break;  // stop at the first marker actually in view
+            }
+            catch (const tf2::TransformException &ex) {
+                // leave empty
+            }
         }
 
         tf2::Transform odom_to_robot_wheel;
@@ -73,8 +111,8 @@ private:
         if (have_camera_estimate) {
             tf2::Vector3 p = map_to_robot_camera.getOrigin();
             double yaw = tf2::getYaw(map_to_robot_camera.getRotation());
-            RCLCPP_INFO(this->get_logger(), "[aruco] Position: (%.2f, %.2f), yaw: %.2f deg",
-                        p.x(), p.y(), yaw * 180.0 / M_PI);
+            RCLCPP_INFO(this->get_logger(), "[aruco_%d] Position: (%.2f, %.2f), yaw: %.2f deg",
+                        seen_marker_id, p.x(), p.y(), yaw * 180.0 / M_PI);
         }
         if (have_odom && have_camera_estimate) {
             double pos_diff = (map_to_robot_camera.getOrigin() - odom_to_robot_wheel.getOrigin()).length();
@@ -91,9 +129,6 @@ private:
 
         if (have_camera_estimate) {
             geometry_msgs::msg::PoseWithCovarianceStamped pose_msg;
-            // fixed: this is a map-frame pose, not odom-frame -- mislabeling this
-            // creates a circular dependency for a map-world-frame EKF and can
-            // silently prevent corrections from ever being applied
             pose_msg.header.frame_id = "map";
             pose_msg.header.stamp = this->get_clock()->now();
 
@@ -122,6 +157,7 @@ private:
     std::shared_ptr<tf2_ros::TransformListener> tf_listener_;
     rclcpp::TimerBase::SharedPtr timer;
     rclcpp::Publisher<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr aruco_pose_pub_;
+    std::map<int, MarkerPose> marker_poses_;
 };
 
 int main(int argc, char **argv)
