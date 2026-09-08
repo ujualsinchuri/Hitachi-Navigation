@@ -8,7 +8,7 @@ ekf_filter_node:
     publish_tf: true          # this node will publish map -> odom for you
     predict_to_current_time: true  # keep publishing continuously between sensor updates,
                                     # not only when a new measurement arrives
-    initial_state: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  # initial state vector
+    # initial_state: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  # initial state vector
 
     # Explicit process noise (Q). Defaults are tuned for noisy real sensors --
     # your simulated odometry is much more accurate, so leaving Q at default
@@ -40,12 +40,12 @@ ekf_filter_node:
 
     # ---- Input 0: continuous wheel odometry ----
     odom0: /odom
-    odom0_config: [true,  true,  false,   # x, y, z
-                    false, false, true,    # roll, pitch, yaw
-                    false, false, false,   # vx, vy, vz
-                    false, false, false,   # vroll, vpitch, vyaw
+    odom0_config: [false,  false,  false,   # x, y, z
+                    false, false, false,    # roll, pitch, yaw
+                    true, true, false,   # vx, vy, vz
+                    false, false, true,   # vroll, vpitch, vyaw
                     false, false, false]   # ax, ay, az
-    odom0_differential: false
+    odom0_differential: true
     odom0_queue_size: 10
 
     # ---- Input 1: intermittent aruco-based pose correction ----
@@ -57,4 +57,4 @@ ekf_filter_node:
                     false, false, false]
     pose0_differential: false
     pose0_queue_size: 10
-    pose0_rejection_threshold: 5.0   # Mahalanobis distance -- rejects wild outlier readings
+    pose0_rejection_threshold: 50.0   # Mahalanobis distance -- rejects wild outlier readings
